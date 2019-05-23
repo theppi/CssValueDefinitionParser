@@ -1,5 +1,13 @@
 package de.theppi.valueDefinitionParser;
 
-public class CssValueDefinitionParser {
+import java.util.HashMap;
 
+import de.theppi.valueDefinitionParser.scraper.HtmlScraper;
+
+public class CssValueDefinitionParser {
+    public static void main (String...args) {
+        HtmlScraper scraper = new HtmlScraper();
+        HashMap<String, CssValueDefinition> definitionMap = scraper.parse();
+        
+    }
 }
