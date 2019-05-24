@@ -27,6 +27,7 @@
 										<versionRange>[1.0,)</versionRange>
 										<goals>
 											<goal>javacc</goal>
+											<goal>jjtree</goal>
 										</goals>
 									</pluginExecutionFilter>
 									<action>
@@ -54,14 +55,28 @@
 				<executions>
 					<execution>
 						<phase>generate-sources</phase>
+						<id>jjtree</id>
+						<goals>
+							<goal>jjtree</goal>
+						</goals>
+						<configuration>
+							<sourceDirectory>src/main/resources</sourceDirectory>
+							<includes>
+								<include>**/*.jjt</include>
+							</includes>
+							<outputDirectory>${project.build.directory}/generated-sources/</outputDirectory>
+						</configuration>
+					</execution>
+					<execution>
+						<phase>generate-sources</phase>
 						<id>javacc</id>
 						<goals>
 							<goal>javacc</goal>
 						</goals>
 						<configuration>
-							<sourceDirectory>src/main/resources</sourceDirectory>
+							<sourceDirectory>${project.build.directory}/generated-sources/</sourceDirectory>
 							<includes>
-								<include>**/CssValueDefinitionParser.jj</include>
+								<include>**/*.jj</include>
 							</includes>
 							<outputDirectory>${project.build.directory}/generated-sources/</outputDirectory>
 						</configuration>
